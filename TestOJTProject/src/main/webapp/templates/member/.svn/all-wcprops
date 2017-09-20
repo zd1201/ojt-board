@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/project/!svn/ver/38194/trunk/2017/OJT_shkim/src/main/webapp/templates/member
+END
+error.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/project/!svn/ver/38252/trunk/2017/OJT_shkim/src/main/webapp/templates/member/error.html
+END
+tpl_content_member_view.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/project/!svn/ver/38242/trunk/2017/OJT_shkim/src/main/webapp/templates/member/tpl_content_member_view.html
+END
+password_enter.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/webapp/templates/member/password_enter.html
+END
+tpl_content_member.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/project/!svn/ver/38270/trunk/2017/OJT_shkim/src/main/webapp/templates/member/tpl_content_member.html
+END
+tpl_content_member_modify.html
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/project/!svn/ver/38347/trunk/2017/OJT_shkim/src/main/webapp/templates/member/tpl_content_member_modify.html
+END

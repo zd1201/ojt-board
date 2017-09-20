@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao
+END
+IMemberDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/IMemberDao.java
+END
+ICommentDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/ICommentDao.java
+END
+CustomJdbcTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/CustomJdbcTemplate.java
+END
+IBoardDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/IBoardDao.java
+END
+IGenericDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/IGenericDao.java
+END
+IRowMapperSetter.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/IRowMapperSetter.java
+END

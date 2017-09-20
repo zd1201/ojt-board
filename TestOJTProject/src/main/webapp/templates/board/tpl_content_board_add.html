@@ -1,0 +1,35 @@
+  <!-- sub_area -->
+   <div id="sub_area" ng-controller="BoardCtrl"> 
+   
+      <div class="title_area">
+           <div class="title">게시판 <span> > 게시글 등록</span></div>
+      </div>
+
+	  <form action="/board" method="post" enctype="multipart/form-data">
+	  <table width="100%"  border="0" cellpadding="1" cellspacing="0"  class="list_tl">
+          <tr>
+            <th width="18%">제목</th>
+            <td class="left" style="padding:9px 10px;"><input name="" type="text" style="width:80%;" name="title" ng-model="title"></td>
+          </tr>
+		  <tr>
+            <th>내용</th>
+            <td class="left" style="padding:9px 10px;">
+            <textarea rows="10"  style="width:80%;" name="content" ng-model="content"></textarea></td>
+          </tr>
+          <tr>
+            <th>파일</th>
+            <td class="left" style="padding:9px 10px;">
+<!-- 				<input type="file" name="file" accept="text/plain, image/*, application/*" onchange="angular.element(this).scope().onFileSelect(this.files)" style="width:95%;"> -->
+				<input type="file" name="file" onchange="angular.element(this).scope().onFileSelect(this.files)" style="width:95%;">
+            </td>
+          </tr>
+      </table>
+      
+      		<div class="btn_area">
+		   <button type="button" class="btn btn-primary" id="submit_button" ng-click="register()">등록</button>
+		   <button type="button" class="btn btn-default" ng-click="cancel()" >취소</button>
+		</div>
+		
+     </form>
+		
+    </div>

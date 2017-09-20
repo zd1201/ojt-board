@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:component-scan base-package="kr.ymtech.ojt.dao.*" />
+
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<util:properties id="db" location="classpath:jdbc.properties" />
+	<!-- <util:properties id="url" location="classpath:urlSource.properties" /> -->
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="#{db['jdbc.driverClassName']}" />
+		<property name="url" value="#{db['jdbc.url']}" />
+		<property name="username" value="#{db['jdbc.username']}" />
+		<property name="password" value="#{db['jdbc.password']}" />
+	</bean>
+
+	<bean id="querySource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:querySource" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="urlSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:urlSource" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="30000000"/>
+		<property name="uploadTempDir" ref="uploadDirResource"/>
+	</bean>
+	
+	<bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
+		<constructor-arg>
+			<value>디렉토리 지정</value>
+		</constructor-arg>
+	</bean>
+
+</beans>

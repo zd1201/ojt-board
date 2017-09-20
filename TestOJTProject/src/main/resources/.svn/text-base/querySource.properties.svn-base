@@ -1,0 +1,87 @@
+## member
+member.check.id=SELECT count(*) FROM member WHERE id = ?
+member.check.pwd=SELECT count(*) FROM member WHERE pwd = PASSWORD(?)
+member.check.login=SELECT count(*) FROM member WHERE id = ? AND pwd = PASSWORD(?)
+
+member.insert=INSERT INTO member (id, name, age, email, addr, pwd, tel) VALUES (?, ?, ?, ?, ?, PASSWORD(?), ?)
+
+member.select.all.paging=SELECT \
+					    * \
+					FROM \
+					    (SELECT \
+					        * \
+					    FROM \
+					        member where 1=1 ##FIELD_FILTERING## \
+					    LIMIT ? , ?) items, \
+					    (SELECT \
+					        COUNT(*) as count \
+					    FROM \
+					        member where 1=1 ##FIELD_FILTERING##) count
+ 
+member.select.name=AND name LIKE ?
+member.select.age=AND age = ?
+member.select.email=AND email LIKE ?
+member.select.addr=AND addr LIKE ?
+member.select.tel=AND tel LIKE ?
+member.select.grade=AND grade = ?
+
+member.select.by.id=SELECT * FROM member WHERE id = ?
+
+member.update=UPDATE member SET name = ?, age = ?, email = ?, addr = ?, tel = ? WHERE id = ?
+member.update.pwd=UPDATE member SET name = ?, age = ?, email = ?, addr = ?, tel = ?, pwd = PASSWORD(?) WHERE id = ?
+
+member.delete=DELETE FROM member WHERE id = ?
+
+memberGrade.select.by.id=SELECT * FROM member_grade WHERE id = ?  
+
+## board
+board.select.all.paging=SELECT \
+					    * \
+					FROM \
+					    (SELECT \
+					        * \
+					    FROM \
+					        board where 1=1 ##FIELD_FILTERING## ORDER BY regdate DESC \
+					    LIMIT ? , ?) items, \
+					    (SELECT \
+					        COUNT(*) as count \
+					    FROM \
+					        board where 1=1 ##FIELD_FILTERING##) count 
+					        
+board.select.title=AND title LIKE ?
+board.select.id=AND id LIKE ?
+board.select.regdate=AND DATE(regdate) >= DATE(?) AND DATE(regdate) <= DATE(?)
+
+board.insert=INSERT INTO board (id, title, content, regdate, filename, filesize, filedata) VALUES (?, ?, ?, ?, ?, ?, ?)
+#board.insert=INSERT INTO board (id, title, content, regdate) VALUES (?, ?, ?, ?)
+
+board.delete=DELETE FROM board WHERE board_no = ?
+comment.delete=DELETE FROM comment WHERE board_no = ? 
+
+board.update=UPDATE board SET title = ?, content = ?, regdate = ? ##FIELD_FILTERING## WHERE board_no = ?
+board.update.file=, filename = ?, filesize = ?, filedata = ?
+board.update.view=UPDATE board SET view = ? WHERE board_no = ?
+
+board.select.by.board_no=SELECT * FROM board WHERE board_no = ?
+
+## comment
+
+comment.select=SELECT * FROM comment WHERE board_no = ?
+
+comment.insert=INSERT INTO comment (board_no, id, content, regdate, parent) VALUES (?, ?, ?, ?, ?)
+
+#reply.insert=INSERT INTO comment (board_no, id, content, regdate, parent) VALUES (?, ?, ?, ?, ?)
+		        
+## SELECT
+#board.select.title.id.regdate=SELECT title, id, regdate, view FROM board
+#board.select.all=SELECT * FROM board
+#board.select.by.board_no=SELECT * FROM board WHERE board_no = ?
+#board.select.by.title=SELECT * FROM board WHERE title = ?
+#board.select.by.date=SELECT * FROM board WHERE regdate between ? AND ?
+#
+#board.insert=INSERT INTO board (id, title, content, regdate)
+#
+## UPDATE
+#TestDao.UPDATE=UPDATE member SET name = ? WHERE id = ?
+## DELETE
+#TestDao.DELETE=DELETE FROM member WHERE id = ?

@@ -1,0 +1,107 @@
+
+<!-- sub_area -->
+<!-- <div id="sub_area" ng-controller="memberCtrl"> -->
+<div id="sub_area" ng-controller="MemberCtrl">
+	<div class="title_area">
+		<div class="title">회원관리</div>
+	</div>
+
+	<!-- search-->
+	<div class="viewlist" style="padding: 10px 15px 0px 30px;">
+		<form name="form1" method="post" action="">
+			<table width="100%" border="0" cellspacing="0" cellpadding="6" class="view_list">
+				<tr>
+					<!-- 			    <th width="40">아이디</th> -->
+					<!-- 			    <td width="140"><input type="text" name="textfield" style="width:120px;" ng-model="q"></td> -->
+					<th width="30" height="37">이름</th>
+					<td><input type="text" name="textfield" style="width: 120px;" ng-model="search_name"></td>
+					<th width="30" >나이</th>
+					<td><input type="text" name="textfield" style="width: 80px;" ng-model="search_age"></td>
+					<th width="45">연락처</th>
+					<td><input type="text" name="textfield" style="width: 150px;" ng-model="search_tel"></td>
+					<th width="45">권한</th>
+					<td>			
+					<select name="select" ng-model="search_grade" ng-options="grade.value as grade.name for grade in gradeOptions">
+						<option value="">선택하여 주세요</option>
+					</select>
+					</td>
+				</tr >
+				<tr>
+					<th>이메일</th>
+					<td colspan="7" height="37"><input type="text" name="textfield" style="width: 450px;" ng-model="search_email"></td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td colspan="6"><input type="text" name="textfield" style="width: 450px;" ng-model="search_addr"></td>
+						<td style="text-align: right;">
+							<button type="button" class="btn btn-primary" ng-click="search()">검색</button> 
+							<button type="button" class="btn btn-default" ng-click="init()">초기화</button>
+						</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- end search -->
+
+
+	<!-- table header-->
+	<div class="view_header">
+		<div class="view_left">
+			<span class="t_title">검색 결과</span>
+		</div>
+		<div class="view_right">
+			<select name="select" ng-model="pagination.itemCountPerPage" ng-change="retrieve()" ng-options="opt.value as opt.name for opt in pageOptions">
+			</select>
+		</div>
+	</div>
+	<!-- end table header-->
+
+	<table width="100%" border="0" cellpadding="1" cellspacing="0"
+		bgcolor="#a6a4b1" class="list_tl">
+		<tr>
+			<th width="6%">번호</th>
+			<!--             <th width="10%">ID</th> -->
+			<th width="10%">이름</th>
+			<th width="8%">나이</th>
+			<th width="18%">이메일</th>
+			<th>주소</th>
+			<th width="13%">연락처</th>
+			<th width="13%">권한</th>
+		</tr>
+		<tr ng-repeat="member in memberData">
+			<td>{{$index+1}}</td>
+			<!--             <td><a href="#/member/{{member.id}}">{{member.id}}</a></td> -->
+			<td ng-click="showMemberInfo(member.id)" style="cursor: pointer">{{member.name}}</td>
+			<td>{{member.age}}</td>
+			<td>{{member.email}}</a></td>
+			<td>{{member.addr}}</td>
+			<td>{{member.tel}}</td>
+			<td ng-if="member.memberGrade==0">관리자</td>
+			<td ng-if="member.memberGrade==1">일반사용자</td>
+		</tr>
+	</table>
+
+	<div class="paging">
+		<div uib-pagination 
+		total-items="pagination.itemTotalCount" 
+		ng-model="pagination.pageNum" 
+		max-size="pagination.pageMaxSize" 
+		items-per-page="pagination.itemCountPerPage"
+		ng-change="retrieve()" 
+		class="pagination-sm"
+		boundary-links="true" 
+		rotate="false" 
+		previous-text="Prev"
+		next-text="Next" 
+		first-text="First" 
+		last-text="Last">
+		</div>
+	</div>
+
+	<!--
+		<div class="btn_area">
+		   <button type="button" class="btn btn-primary" id="submit_button" >글쓰기</button>
+		   <button type="button" class="btn btn-default" id="" >목록</button>
+		</div>
+		-->
+</div>

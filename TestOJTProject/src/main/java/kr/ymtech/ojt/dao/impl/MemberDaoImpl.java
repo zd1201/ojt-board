@@ -1,0 +1,300 @@
+package kr.ymtech.ojt.dao.impl;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.stereotype.Repository;
+
+import kr.ymtech.ojt.controller.model.MemberGrade;
+import kr.ymtech.ojt.controller.model.PaginationResult;
+import kr.ymtech.ojt.dao.IMemberDao;
+import kr.ymtech.ojt.dao.IRowMapperSetter;
+import kr.ymtech.ojt.dao.model.MemberModel;
+import open.commons.Result;
+
+@Repository(MemberDaoImpl.BEAN_QUALIFIER)
+public class MemberDaoImpl extends GenericDaoImpl implements IMemberDao {
+
+	public static final String BEAN_QUALIFIER = "kr.ymtech.ojt.dao.impl.MemberDaoImpl";
+
+	public MemberDaoImpl() {
+	}
+
+	@Override
+	public int loginCheck(String id, String pwd) {
+		String query = getQuery("member.check.login");
+		return getJdbcTemplate().queryForObject(query, Integer.class, id, pwd);
+	}
+
+	@Override
+	public int existIdCheck(String id) {
+		// TODO Auto-generated method stub
+		String query = getQuery("member.check.id");
+
+		return getJdbcTemplate().queryForObject(query, Integer.class, id);
+	}
+
+	@Override
+	public Result<Integer> createMember(MemberModel memberModel) {
+		String query = getQuery("member.insert");
+
+		return execute(query, new PreparedStatementSetter() {
+			@Override
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				// TODO Auto-generated method stub
+				pstmt.setString(1, memberModel.getId());
+				pstmt.setString(2, memberModel.getName());
+				pstmt.setInt(3, memberModel.getAge());
+				pstmt.setString(4, memberModel.getEmail());
+				pstmt.setString(5, memberModel.getAddr());
+				pstmt.setString(6, memberModel.getPwd());
+				pstmt.setString(7, memberModel.getTel());
+			}
+		});
+	}
+
+	@Override
+	public Result<MemberModel> getMember(String id) {
+		String query = getQuery("member.select.by.id");
+
+		String[] param = { id };
+
+		return getObject(query, param, new IRowMapperSetter<MemberModel>() {
+			@Override
+			public MemberModel set(ResultSet rs, int rowNum) throws SQLException {
+				MemberModel member = new MemberModel();
+
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				member.setPwd(rs.getString("pwd"));
+				member.setTel(rs.getString("tel"));
+				member.setAge(rs.getInt("age"));
+				member.setAddr(rs.getString("addr"));
+				member.setEmail(rs.getString("email"));
+				member.setMemberGrade(rs.getInt("grade"));
+
+				return member;
+			}
+		});
+	}
+
+	@Override
+	public Result<MemberGrade> getMemberGrade(int id) {
+		String query = getQuery("memberGrade.select.by.id");
+
+		Integer[] param = { id };
+
+		return getObject(query, param, new IRowMapperSetter<MemberGrade>() {
+			@Override
+			public MemberGrade set(ResultSet rs, int rowNum) throws SQLException {
+				MemberGrade grade = new MemberGrade();
+
+				grade.setId(rs.getInt("id"));
+				grade.setName(rs.getString("name"));
+				grade.setDescr(rs.getString("descr"));
+
+				return grade;
+			}
+		});
+
+	}
+
+	@Override
+	public PaginationResult<MemberModel> getMemberInfo(int pageNum, int itemCountPerPage, String searchName,
+			int searchAge, String searchEmail, String searchAddr, String searchTel, int searchGrade) {
+
+		String sql = getQuery("member.select.all.paging");
+		String query = "";
+		ArrayList<Object> li = new ArrayList<>();
+
+		// 이름 검색 조건
+		if (!"".equals(searchName) && searchName != null) {
+			query += getQuery("member.select.name");
+			query += " ";
+			li.add("%" + searchName + "%");
+		}
+		// 나이 검색 조건
+		if (searchAge > 0) {
+			query += getQuery("member.select.age");
+			query += " ";
+			li.add(searchAge);
+		}
+
+		// 이메일 검색 조건
+		if (!"".equals(searchEmail) && searchEmail != null) {
+			query += getQuery("member.select.email");
+			query += " ";
+			li.add("%" + searchEmail + "%");
+		}
+
+		// 주소 검색 조건
+		if (!"".equals(searchAddr) && searchAddr != null) {
+			query += getQuery("member.select.addr");
+			query += " ";
+			li.add("%" + searchAddr + "%");
+		}
+		// 연락처 검색 조건
+
+		if (!"".equals(searchTel) && searchTel != null) {
+			query += getQuery("member.select.tel");
+			query += " ";
+			li.add("%" + searchTel + "%");
+		}
+
+		// 권한 검색 조건
+		if (searchGrade != 2) {
+			query += getQuery("member.select.grade");
+			query += " ";
+			li.add(searchGrade);
+		}
+
+		li.add((pageNum - 1) * itemCountPerPage);
+		li.add(itemCountPerPage);
+
+		sql = sql.replace("##FIELD_FILTERING##", query);
+
+		logger.debug(sql);
+
+		// 이름 검색 조건
+		if (!"".equals(searchName) && searchName != null) {
+			li.add("%" + searchName + "%");
+		}
+		// 나이 검색 조건
+		if (searchAge > 0) {
+			li.add(searchAge);
+		}
+
+		// 이메일 검색 조건
+		if (!"".equals(searchEmail) && searchEmail != null) {
+			li.add("%" + searchEmail + "%");
+		}
+
+		// 주소 검색 조건
+		if (!"".equals(searchAddr) && searchAddr != null) {
+			li.add("%" + searchAddr + "%");
+		}
+		// 연락처 검색 조건
+
+		if (!"".equals(searchTel) && searchTel != null) {
+			li.add("%" + searchTel + "%");
+		}
+
+		// 권한 검색 조건
+		if (searchGrade != 2) {
+			li.add(searchGrade);
+		}
+		
+		if(logger.isDebugEnabled()){
+			logger.debug(li.toString());
+		}
+		PaginationResult<MemberModel> pResult = new PaginationResult<>();
+
+		pResult.setItemCountPerPage(itemCountPerPage);
+		pResult.setPageNum(pageNum);
+
+		final int[] totalCount = new int[1];
+
+		Result<List<MemberModel>> result = getObjectList(sql, li.toArray(), new IRowMapperSetter<MemberModel>() {
+
+			public MemberModel set(ResultSet rs, int rowNum) throws SQLException {
+
+				MemberModel member = new MemberModel();
+
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				member.setPwd(rs.getString("pwd"));
+				member.setTel(rs.getString("tel"));
+				member.setAge(rs.getInt("age"));
+				member.setAddr(rs.getString("addr"));
+				member.setEmail(rs.getString("email"));
+				member.setMemberGrade(rs.getInt("grade"));
+				totalCount[0] = rs.getInt("cnt");
+
+				return member;
+			}
+		});
+
+		pResult.setTotalCount(totalCount[0]);
+		pResult.setItems(result.getData());
+
+		return pResult;
+	}
+
+	@Override
+	public Result<Integer> updateMember(MemberModel memberModel) {
+
+
+		if (null != memberModel.getPwd() && !"".equalsIgnoreCase(memberModel.getPwd())) {
+			String query = getQuery("member.update.pwd");
+
+			return execute(query, new PreparedStatementSetter() {
+				public void setValues(PreparedStatement pstmt) throws SQLException {
+					pstmt.setString(1, memberModel.getName());
+					pstmt.setInt(2, memberModel.getAge());
+					pstmt.setString(3, memberModel.getEmail());
+					pstmt.setString(4, memberModel.getAddr());
+					pstmt.setString(5, memberModel.getTel());
+					pstmt.setString(6, memberModel.getPwd());
+					pstmt.setString(7, memberModel.getId());
+					
+				}
+			});
+		} else {
+
+			String query = getQuery("member.update");
+			return execute(query, new PreparedStatementSetter() {
+				public void setValues(PreparedStatement pstmt) throws SQLException {
+
+					pstmt.setString(1, memberModel.getName());
+					pstmt.setInt(2, memberModel.getAge());
+					pstmt.setString(3, memberModel.getEmail());
+					pstmt.setString(4, memberModel.getAddr());
+					pstmt.setString(5, memberModel.getTel());
+					pstmt.setString(6, memberModel.getId());
+				}
+			});
+		}
+	}
+
+//	@Override
+//	public Result<Integer> updateMemberPwd(MemberModel memberModel) {
+//
+//		String query = getQuery("member.update.pwd");
+//
+//		return execute(query, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				// TODO Auto-generated method stub
+//				pstmt.setString(1, memberModel.getName());
+//				pstmt.setInt(2, memberModel.getAge());
+//				pstmt.setString(3, memberModel.getEmail());
+//				pstmt.setString(4, memberModel.getAddr());
+//				pstmt.setString(5, memberModel.getTel());
+//				pstmt.setString(6, memberModel.getPwd());
+//				pstmt.setString(7, memberModel.getId());
+//			}
+//		});
+//	}
+
+	@Override
+	public Result<Integer> deleteMember(String id) {
+		String query = getQuery("member.delete");
+
+		return execute(query, new PreparedStatementSetter() {
+			public void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, id);
+			}
+		});
+	}
+
+//	ArrayList<Object> setListParams(int pageNum, int itemCountPerPage, String searchName, int searchAge,
+//			String searchEmail, String searchAddr, String searchTel, int searchGrade) {
+//		ArrayList<Object> li = null;
+//		return null;
+//	}
+
+}

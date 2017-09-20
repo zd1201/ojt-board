@@ -1,0 +1,49 @@
+   <!-- sub_area -->
+   <div id="sub_area"> 
+   
+      <div class="title_area">
+           <div class="title_area">회원관리 <span> > 회원정보</span></div>
+      </div>
+
+	  
+	  <form action="/signup" method="post" name="signup">  
+	   <table width="100%"  border="0" cellpadding="1" cellspacing="0" bgcolor="#a6a4b1" class="list_read">
+          <tr>
+            <th width="20%" style="height:40px;">아이디</th>
+            <td>{{memberInfo.id}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">비밀번호</th>
+            <td>{{memberInfo.pwd}}</td>
+          </tr>          
+		  <tr>
+            <th style="height:40px;">이름</th>
+            <td>{{memberInfo.name}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">나이</th>
+            <td>{{memberInfo.age}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">연락처</th>
+            <td>{{memberInfo.tel}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">이메일</th>
+            <td>{{memberInfo.email}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">주소</th>
+            <td>{{memberInfo.addr}}</td>
+          </tr>
+      </table>
+      </form>
+		
+		<div class="btn_area">
+		   <button type="button" class="btn btn-default" id="" style="float: left;" ng-click="remove()">삭제</button>
+		   <button type="button" class="btn btn-primary" id="submit_button" ng-click="update()">수정</button>
+		   <button type="button" class="btn btn-default" id="cancel_button" ng-click="cancel()">취소</button>
+		</div>
+		
+		
+    </div>

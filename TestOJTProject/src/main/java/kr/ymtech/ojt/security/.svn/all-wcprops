@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/project/!svn/ver/38201/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/security
+END
+GrantedAuthorityDetail.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/project/!svn/ver/38211/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/security/GrantedAuthorityDetail.java
+END
+LoginAuthSuccessHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/project/!svn/ver/38225/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/security/LoginAuthSuccessHandler.java
+END
+UserAuthenticationProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/project/!svn/ver/38214/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/security/UserAuthenticationProvider.java
+END
+LoginAuthFailureHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/project/!svn/ver/38225/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/security/LoginAuthFailureHandler.java
+END

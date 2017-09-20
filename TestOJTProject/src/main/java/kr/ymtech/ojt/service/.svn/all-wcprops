@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service
+END
+ICommentService.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/ICommentService.java
+END
+IBoardService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/project/!svn/ver/38347/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/IBoardService.java
+END
+ILoginService.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/project/!svn/ver/38201/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/ILoginService.java
+END
+IMemberService.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/IMemberService.java
+END
+IMypageService.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/project/!svn/ver/38145/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/IMypageService.java
+END

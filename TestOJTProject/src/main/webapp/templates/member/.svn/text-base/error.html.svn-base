@@ -1,0 +1,8 @@
+ <div id="contents_login" ng-controller="memberCtrl">
+    <div class="login_area">
+      <ul>
+        <li><span style="font-size: 14px; font-weight: bold;">에러코드: {{responseCode}} - {{responseStatus}}</span></li>
+        <li><span style="font-size: 12px;">{{responseDesc}}</span>
+      </ul>
+    </div>
+  </div>

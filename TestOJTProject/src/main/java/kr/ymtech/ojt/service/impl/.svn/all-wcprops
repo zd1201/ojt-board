@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/impl
+END
+BoardServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/impl/BoardServiceImpl.java
+END
+GenericService.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/impl/GenericService.java
+END
+MemberServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/impl/MemberServiceImpl.java
+END
+CommentServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/service/impl/CommentServiceImpl.java
+END

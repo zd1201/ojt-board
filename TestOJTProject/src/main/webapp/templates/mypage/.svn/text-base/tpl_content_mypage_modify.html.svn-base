@@ -1,0 +1,55 @@
+   <!-- sub_area -->
+   <div id="sub_area" ng-controller="MyPageCtrl" >
+   
+      <div class="title_area">
+           <div class="title">마이페이지 <span> > 회원정보 변경</span></div>
+      </div>
+
+	  
+	   <table width="100%"  border="0" cellpadding="1" cellspacing="0" bgcolor="#a6a4b1" class="list_read">
+          <tr>
+            <th width="20%" style="height:40px;">아이디</th>
+            <td>{{myInfo.id}}</td>
+          </tr>
+          <tr>
+            <th>비밀번호 <span style="color:#c92c71">*</span></th>
+            <td>
+               <p><input class="signup_form" id="password" name="password" type="password" placeholder="비밀번호" ng-model="modifyPwd" ng-change="pwdChange()"/></p>
+               <p style="margin-top:5px;"><input class="signup_form" id="password" name="password" type="password" placeholder="비밀번호 확인" ng-model="modifyPwdCheck" ng-change="pwdChange()"/></p>               
+               <p class="list_read_ex" style="color: {{info_pwd_color}}">{{pwd_msg}}</p>                     
+            </td>
+          </tr>          
+		  <tr>
+            <th>이름</th>
+            <td><input class="signup_form" id="name" name="name" type="text" placeholder="name" ng-model="myInfo.name"/></td>
+          </tr>
+          <tr>
+            <th>나이</th>
+            <td><input class="signup_form" id="age" name="age" type="text" autofocus placeholder="age" ng-model="myInfo.age"/></td>
+          </tr>
+          <tr>
+            <th>연락처</th>
+            <td>
+               <input class="signup_form" id="tel" name="tel" type="text" autofocus placeholder="- 포함 입력하세요"  ng-model="myInfo.tel">
+            
+            </td>
+          </tr>
+          <tr>
+            <th>이메일 <span style="color:#c92c71">*</span></th>
+            <td>
+               <input class="signup_form" id="email" name="email" type="text" placeholder="id@ymtech.co.kr" style="width:80%" ng-model="myInfo.email"/>
+            </td>
+          </tr>
+          <tr>
+            <th>주소</th>
+            <td><input class="signup_form" id="addr" name="addr" type="text" autofocus placeholder="address" style="width:80%" ng-model="myInfo.addr"/></td>
+          </tr>
+      </table>
+		
+		<div class="btn_area">
+		   <button type="button" class="btn btn-primary" id="submit_button" ng-click="myInfoUpdate()">확인</button>
+		   <a href="#/mypage"><button type="button" class="btn btn-default" id="cancel_button" >취소</button></a>
+		</div>
+		
+		
+    </div>

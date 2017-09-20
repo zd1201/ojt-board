@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/project/!svn/ver/38137/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/model
+END
+IPaginationResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/project/!svn/ver/38247/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/model/IPaginationResult.java
+END
+MemberGrade.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/model/MemberGrade.java
+END
+ResponseData.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/project/!svn/ver/38242/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/model/ResponseData.java
+END
+PaginationResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/project/!svn/ver/38247/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/model/PaginationResult.java
+END

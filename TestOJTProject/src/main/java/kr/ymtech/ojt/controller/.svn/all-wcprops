@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller
+END
+CommentController.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/CommentController.java
+END
+MypageController.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/MypageController.java
+END
+MemberController.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/MemberController.java
+END
+LoginController.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/LoginController.java
+END
+ErrorController.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/ErrorController.java
+END
+BoardController.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/controller/BoardController.java
+END

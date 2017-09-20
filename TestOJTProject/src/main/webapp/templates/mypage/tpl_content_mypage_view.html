@@ -1,0 +1,45 @@
+   <!-- sub_area -->
+   <div id="sub_area" ng-controller="MyPageCtrl">
+   
+      <div class="title_area">
+           <div class="title">마이페이지 <span> > 회원정보</span></div>
+      </div>
+
+	  
+	  <form action="/signup" method="post" name="signup">  
+	   <table width="100%"  border="0" cellpadding="1" cellspacing="0" bgcolor="#a6a4b1" class="list_read">
+          <tr>
+            <th width="20%" style="height:40px;">아이디</th>
+            <td>{{myInfo.id}}</td>
+          </tr>          
+		  <tr>
+            <th style="height:40px;">이름</th>
+            <td>{{myInfo.name}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">나이</th>
+            <td>{{myInfo.age}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">연락처</th>
+            <td>{{myInfo.tel}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">이메일</th>
+            <td>{{myInfo.email}}</td>
+          </tr>
+          <tr>
+            <th style="height:40px;">주소</th>
+            <td>{{myInfo.addr}}</td>
+          </tr>
+      </table>
+      </form>
+		
+		<div class="btn_area">
+		   <button type="button" class="btn btn-default" id="" style="float: left;" ng-click="withdrawal()" >탈퇴</button>
+		   <button type="button" class="btn btn-primary" id="submit_button" ng-click="goMyUpdate()">수정</button>
+		   <a href="#/board"><button type="button" class="btn btn-default" id="cancel_button">취소</button></a>
+		</div>
+		
+		
+    </div>

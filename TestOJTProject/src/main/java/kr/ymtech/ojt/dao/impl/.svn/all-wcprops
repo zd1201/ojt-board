@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/project/!svn/ver/38102/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/impl
+END
+BoardDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/impl/BoardDaoImpl.java
+END
+GenericDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/project/!svn/ver/38184/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/impl/GenericDaoImpl.java
+END
+MemberDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/impl/MemberDaoImpl.java
+END
+CommentDaoImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/impl/CommentDaoImpl.java
+END

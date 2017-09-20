@@ -1,0 +1,71 @@
+10
+
+dir
+38194
+http://svn.ymtech.co.kr/svn/project/trunk/2017/OJT_shkim/src/main/webapp/WEB-INF
+http://svn.ymtech.co.kr/svn/project
+
+
+
+2017-08-23T07:37:02.309764Z
+38194
+yskim
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+1d794c71-7455-4eb2-8975-a75756964f27
+
+classes
+dir
+
+spring
+dir
+
+views
+dir
+
+web.xml
+file
+38252
+
+
+
+2017-09-01T05:18:36.239000Z
+e4009f7ab4e989adfa9630f539d01c99
+2017-09-01T08:59:49.856784Z
+38252
+shkim
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2124
+

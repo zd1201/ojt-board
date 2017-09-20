@@ -1,0 +1,114 @@
+   <!-- sub_area -->
+   <div id="sub_area" ng-controller="BoardCtrl"> 
+   
+      <div class="title_area">
+           <div class="title">게시판</div>
+      </div>
+
+    	
+	<!-- search-->
+    <div class="viewlist">
+     <form name="form1" method="post" action="">
+		<table width="100%"  border="0" cellspacing="0" cellpadding="6" class="view_list">
+		  <tr height="40">
+			    <th width="100" >검색기간</th>
+<!-- 			    <td><input type="date" ng-model="search_date1"><img src="/images/icon_calendar.gif" style="cursor: pointer"/> ~ <input type="date" ng-model="search_date2"><img src="/images/icon_calendar.gif" style="cursor: pointer"/></td> -->
+ 			<td>
+ 			
+			    <span class="row">
+			      <span class="col-md-6" style="width: 185px; padding-left: 0px;">
+			        <p class="input-group">
+			          <input type="text" class="form-control" uib-datepicker-popup is-open="popup1.opened" datepicker-options="dateOptions1" ng-required="true" close-text="Close" ng-model="search_date1"/>
+			          <span class="input-group-btn">
+			            <button type="button" class="btn btn-default" ng-click="open1()" style="margin-top: 0px; width: 52px; height: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+			          </span>
+			        </p>
+			      </span>
+			      <span class="col-md-6" style="padding-left: -; padding-right: -; width: 11px; padding-right: 0px; padding-left: 0px;">~</span>
+			     <span class="col-md-6" style="width: 205px;padding-left: 15px;">
+			        <p class="input-group">
+			          <input type="text" class="form-control" uib-datepicker-popup is-open="popup2.opened" datepicker-options="dateOptions2" ng-required="true" close-text="Close" ng-model="search_date2"/>
+			          <span class="input-group-btn">
+			            <button type="button" class="btn btn-default" ng-click="open2()" style="margin-top: 0px; width: 52px; height: 34px;"><i class="glyphicon glyphicon-calendar"></i></button>
+			          </span>
+			        </p>
+			      </span>
+			    </span>
+    
+			</td>
+
+		   </tr>
+		 	 <tr>
+			    <th>작성자</th>
+			    <td width="170"><input type="text" name="textfield" style="width:150px;" ng-model="search_id" ng-enter="search()"></td>
+			    </tr>
+			    <tr>
+			    <th width="40">제목</th>
+			    <td ><input type="text" name="textfield" style="width:350px;" ng-model="search_title" ng-enter="search()"></td>
+			    <td style="text-align:right;">
+			       <button type="button" class="btn btn-primary" ng-click="search()">검색</button>
+			       <button type="button" class="btn btn-default" ng-click="init()">초기화</button> 
+			    </td>
+		   </tr>
+		  </table>
+		  </form>
+    </div>
+
+	  <!-- end search -->
+		
+		     	  
+      <!-- table header-->
+      <div class="view_header">
+         <div class="view_left"> 
+		       <span class="t_title">검색 결과</span> 
+	     </div> 
+	     <div class="view_right"> 
+		      <select name="select" ng-model="pagination.itemCountPerPage" ng-change="retrieve()" ng-options="opt.value as opt.name for opt in pageOptions">
+			</select>
+	     </div>      		 
+	  </div>
+	  <!-- end table header-->
+	  
+	  <table width="100%"  border="0" cellpadding="1" cellspacing="0" bgcolor="#a6a4b1" class="list_tl">
+          <tr>
+            <th width="8%">번호</th>
+            <th>제목</th>
+            <th width="12%">작성자</th>
+            <th width="16%">날짜</th>
+            <th width="8%">조회수</th>
+          </tr>
+		  <tr ng-repeat="board in boardData">
+            <td>{{board.board_no}}</td>
+            <td><span style="cursor: pointer" ng-click="boardDetail(board.board_no, board.view)">{{board.title}}</span></td>
+            <td>{{board.id}}</td>
+            <td>{{board.regdate.substring(0,16)}}</td>
+            <td>{{board.view}}</td>
+          </tr>
+          <tr><td colspan="5" ng-if="boardData == null">검색된 결과가 없습니다.</td></tr>
+      </table>
+	
+	<div style="float: right">
+		<button type="button" class="btn btn-primary" id="submit_button" ng-click="write()">글쓰기</button>
+	</div>
+	
+	 <!--  number -->
+      <div>
+       	<div class="paging">
+	 		<div uib-pagination  
+	 		total-items="pagination.itemTotalCount"  
+	 		ng-model="pagination.pageNum"  
+	 		max-size="pagination.pageMaxSize"  
+	 		items-per-page="pagination.itemCountPerPage" 
+	 		ng-change="retrieve()"  
+			class="pagination-sm"
+			boundary-links="true" 
+			rotate="false" 
+			previous-text="Prev"
+			next-text="Next" 
+			first-text="First" 
+			last-text="Last">
+			</div>
+		</div> 
+  	   </div>
+       <!--end number --->
+    </div>

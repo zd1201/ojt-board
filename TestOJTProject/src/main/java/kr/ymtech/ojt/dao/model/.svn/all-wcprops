@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/project/!svn/ver/38137/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/model
+END
+MemberModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/project/!svn/ver/38214/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/model/MemberModel.java
+END
+CommentModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/model/CommentModel.java
+END
+BoardModel.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/project/!svn/ver/38434/trunk/2017/OJT_shkim/src/main/java/kr/ymtech/ojt/dao/model/BoardModel.java
+END

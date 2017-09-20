@@ -1,0 +1,133 @@
+<div>
+	<!-- sub_area -->
+	<div id="sub_area">
+
+		<div class="title_area">
+			<div class="title">
+				게시판 <span> > 게시글 상세보기</span>
+			</div>
+		</div>
+		
+	<div style="margin: 5px;height: 37px;" ng-if="!updateForm">
+		<span ng-if="boardInfo.id == user">
+			<button type="button" class="btn btn-primary" id="submit_button" ng-click="update()">수정</button>
+			<button type="button" class="btn btn-default" id="submit_button" ng-click="remove()" >삭제</button>
+		</span>
+ 		<span><button type="button" class="btn btn-default" ng-click="cancel()" style="float: right;">닫기</button></span>
+	 </div>
+	 
+		<table width="100%" border="0" cellpadding="1" cellspacing="0" class="list_tl">
+			<tr>
+				<td colspan="6" class="l_t">
+				<span ng-if="!updateForm">{{boardInfo.title}}</span>
+				<input name="" type="text" style="width:80%;" ng-model="boardInfo.title" ng-if="updateForm">
+				</td>
+				
+			</tr>
+			<tr>
+				<th width="15%">작성자</th>
+				<td width="19%" >{{boardInfo.id}}</td>
+				<th width="15%">작성일자</th>
+				<td width="19%">{{boardInfo.regdate.substring(0,16)}}</td>
+				<th width="15%">첨부파일</th>
+				<td>
+					<span ng-if="!updateForm"><a download="{{boardInfo.file}}" ng-click="download(boardInfo.filename)"  style="cursor:pointer;">{{boardInfo.filename}}</a></span>
+					<span class="filebox" ng-if="updateForm">
+					<form method="post" enctype="multipart/form-data">
+					<label for="ex_file">업로드</label>
+					<input type="file" name="file" id="ex_file" onchange="angular.element(this).scope().onFileSelect(this.files)">
+					</form>
+					</span>
+				
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6" style="padding: 20px;" class="left">
+				<span ng-if="!updateForm">{{boardInfo.content}}</span>
+				<textarea name="" rows="10"  style="width:100%;" ng-model="boardInfo.content" ng-if="updateForm"></textarea>
+				</td>
+			</tr>
+		</table>
+
+
+		<table width="100%" border="0" cellpadding="1" cellspacing="0"
+			class="list_tl" style="border-top: 1px solid #75808f;" ng-if="!updateForm">
+			<tr>
+				<td class="left" style="padding: 8px 15px 10px; height: 45px;">
+				<b ng-if="commentInfo.length!=null">댓글( {{commentInfo.length}} )</b>
+				<b ng-if="commentInfo.length==null">댓글( 0 )</b>
+				</td>
+			</tr>
+			<tr>
+				<td class="bg_br">
+ 				<div ng-repeat="cmt in commentInfo" >
+ 						<div class="list_r" ng-if="null == cmt.parent || 0 == cmt.parent">
+ 							<b>{{cmt.id}}</b> 
+ 							<span class="r_date">{{cmt.regdate | date:'yyyy-MM-dd HH:mm'}}</span> 
+ 							<img src="/images/icon_arrow.gif" style="width: 2%; height: auto"/><span ng-click="showReplyForm(cmt)" ng-if="!cmt.reply" style="cursor:pointer; font-size: 11px;"> 답글</span>
+ 							<span ng-click="showReplyForm(cmt)" ng-if="cmt.reply" style="cursor:pointer; font-size: 11px; color: red;"> 답글 취소</span>
+ 							<div class="r_con">{{cmt.content}}</div> 
+ 						
+ 						<div ng-repeat="reply in commentInfo">
+<!-- 	 						<div ng-if= "reply.parent == cmt.comment_no" style="border-top: 1px solid #c5cbcd;"> -->
+	 						<div ng-if= "reply.parent == cmt.comment_no">
+	 							<div>
+		 							<img src="/images/icon_reply.gif" style="width: 3%; height: auto"/>
+			 						<b>{{reply.id}}</b> 
+			 						<span class="r_date">{{reply.regdate | date:'yyyy-MM-dd HH:mm'}}</span> 
+		 						</div>
+		 						<div>
+		 							<div style="display:inline-block; width: 28px;"></div><div class="r_con" style="display:inline-block">	{{reply.content}} </div>
+ 								</div>
+ 							</div>
+ 						</div>
+ 					</div> 
+<!-- 						<div compile="replyHTML(cmt.comment_no)"></div> -->
+		<!-- reply regist -->
+<!-- 						<div ng-if="!updateForm"> -->
+							<div ng-if="!updateForm && cmt.reply">		
+								<table width="100%" cellpadding="1" cellspacing="0">
+									<tbody>
+										<tr style="padding-bottom: 20px;">
+											<td>
+												<div style="padding: 10px;">
+													<textarea rows="10"  style="overflow:hidden; width: 100%; height: 64px; resize: none;" ng-model="comment"></textarea>
+												</div>
+											</td>
+											<td style="text-align: center;">
+												<a style="cursor:pointer;" ng-click="commentRegit(comment,cmt.comment_no)">등록</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</td>
+		</table>
+		
+		<!-- comment regist -->
+		
+		<div ng-if="!updateForm">
+		<table width="100%" cellpadding="1" cellspacing="0">
+			<tbody>
+				<tr style="padding-bottom: 20px;">
+					<td>
+						<div style="padding: 10px;">
+							<textarea rows="10"  style="overflow:hidden; width: 100%; height: 64px; resize: none;" ng-model="comment"></textarea>
+						</div>
+					</td>
+					<td style="text-align: center;">
+						<a style="cursor:pointer;" ng-click="commentRegit(comment, null)">등록</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+		<div class="btn_area" ng-if="updateForm">
+			<button type="button" class="btn btn-primary" id="submit_button" ng-click="updateOk()">확인</button>
+			<button type="button" class="btn btn-default" ng-click="updateCancel()">취소</button>
+		</div>
+
+</div>
